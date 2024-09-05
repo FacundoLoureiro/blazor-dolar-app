@@ -1,0 +1,36 @@
+﻿@page "/"
+@using System.Text.Json
+@using BlazorDolarApp.Services
+@using BlazorDolarApp.Models
+@inject DolaresServices DolaresServices
+
+<MudTable Items="@dolarList.Take(2)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Dolar</MudTh>
+        <MudTh>Compra</MudTh>
+        <MudTh>Venta</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Tipo de Dólar">@context.Dolar</MudTd>
+            <MudTd DataLabel="Compra">@context.Compra</MudTd>
+            <MudTd DataLabel="Venta">@context.Venta</MudTd>
+        </RowTemplate>      
+    </MudTable>
+    @code {
+    private List<Dolares> dolarList = new List<Dolares>();
+    private bool _loading = true;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _loading = true;
+        string dolares = await DolaresServices.GetDolarOficialAsync();
+        var dolarOficial = JsonSerializer.Deserialize<Dolares>(dolares);
+        if(dolarOficial != null)
+        {
+            dolarOficial.Dolar = "Dolar Oficial";
+            dolarList.Add(dolarOficial);
+        }
+        _loading = false;
+    }
+}
