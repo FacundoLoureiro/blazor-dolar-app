@@ -3,7 +3,12 @@
 @using BlazorDolarApp.Services
 @using BlazorDolarApp.Models
 @inject DolaresServices DolaresServices
+@inject ISnackbar Snackbar
 
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <MudAlert Severity="Severity.Error" Class="my-2">@errorMessage</MudAlert>
+}
 <MudTable Items="@dolarList.Take(2)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Dolar</MudTh>
@@ -11,7 +16,7 @@
         <MudTh>Venta</MudTh>
     </HeaderContent>
     <RowTemplate>
-        <MudTd DataLabel="Tipo de Dólar">@context.Dolar</MudTd>
+        <MudTd DataLabel="Tipo de Dólar">@context.Moneda</MudTd>
             <MudTd DataLabel="Compra">@context.Compra</MudTd>
             <MudTd DataLabel="Venta">@context.Venta</MudTd>
         </RowTemplate>      
@@ -19,18 +24,30 @@
     @code {
     private List<Dolares> dolarList = new List<Dolares>();
     private bool _loading = true;
-
+    private string errorMessage = "";
 
     protected override async Task OnInitializedAsync()
+    {
+        try
     {
         _loading = true;
         string dolares = await DolaresServices.GetDolarOficialAsync();
         var dolarOficial = JsonSerializer.Deserialize<Dolares>(dolares);
-        if(dolarOficial != null)
+        if (dolarOficial != null)
         {
-            dolarOficial.Dolar = "Dolar Oficial";
+            dolarOficial.Moneda = "Dolar Oficial";
             dolarList.Add(dolarOficial);
         }
+    }
+    catch (Exception ex)
+    {
+        errorMessage = $"Error al cargar datos: {ex.Message}";
+        Snackbar.Add(errorMessage, Severity.Error);
+        
+    }
+    finally
+    {
         _loading = false;
     }
+  }
 }

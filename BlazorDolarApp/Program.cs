@@ -12,7 +12,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddHttpClient<DolaresServices>(client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7199");
+    client.BaseAddress = new Uri("https://localhost:44368/");
 });
 builder.Services.AddMudServices();
 
