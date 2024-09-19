@@ -15,7 +15,7 @@ namespace BlazorDolarApp.Services
 
         public async Task<string> GetDolarOficialAsync()
         {
-            var response = await _httpClient.GetStringAsync("dolar/oficial");
+            var response = await _httpClient.GetStringAsync("v1/dolares/oficial");
             return response;
         }
     }

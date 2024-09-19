@@ -9,7 +9,8 @@
 {
     <MudAlert Severity="Severity.Error" Class="my-2">@errorMessage</MudAlert>
 }
-<MudTable Items="@dolarList" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+
+<MudTable Items="@dolarList" T="Dolares" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Moneda</MudTh>
         <MudTh>Casa</MudTh>
@@ -24,12 +25,14 @@
             <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
             <MudTd DataLabel="Compra">@context.Compra</MudTd>
             <MudTd DataLabel="Venta">@context.Venta</MudTd>
-            <MudTd DataLabel="Fecha Actualización">@context.FechaActualizacion.ToString("dd/MM/yyyy HH:mm")</MudTd>
+            <MudTd DataLabel="Fecha Actualización">@context.FechaActualizacion</MudTd>
      
         </RowTemplate>      
     </MudTable>
+
+ 
     @code {
-    private List<Dolares> dolarList = new();
+    private List<Dolares> dolarList = new List<Dolares>();
     private bool _loading = true;
     private string errorMessage = "";
 
@@ -37,12 +40,13 @@
     {
         try
         {
-            _loading = true;
+            _loading = true;           
             string dolares = await DolaresServices.GetDolarOficialAsync();
-            var dolarOficial = JsonSerializer.Deserialize<List<Dolares>>(dolares);
+            var dolarOficial = JsonSerializer.Deserialize<Dolares>(dolares);
             if (dolarOficial != null)
             {
-                dolarList = dolarOficial;
+                dolarList.Add(dolarOficial);
+                
             }
     }
     catch (Exception ex)
