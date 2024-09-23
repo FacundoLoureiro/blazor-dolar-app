@@ -1,8 +1,8 @@
-﻿@page "/"
+﻿@page "/euro"
 @using System.Text.Json
 @using BlazorDolarApp.Services
 @using BlazorDolarApp.Models
-@inject DolaresServices DolaresServices
+@inject EuroServices EuroServices
 @inject ISnackbar Snackbar
 
 @if (!string.IsNullOrEmpty(errorMessage))
@@ -10,7 +10,7 @@
     <MudAlert Severity="Severity.Error" Class="my-2">@errorMessage</MudAlert>
 }
 
-<MudTable Items="@dolarList" T="Dolares" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+<MudTable Items="@euroList" T="Euro" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Moneda</MudTh>
         <MudTh>Nombre</MudTh>
@@ -30,7 +30,7 @@
 
  
     @code {
-    private List<Dolares> dolarList = new List<Dolares>();
+    private List<Euro> euroList = new List<Euro>();
     private bool _loading = true;
     private string errorMessage = "";
 
@@ -39,13 +39,11 @@
         try
         {
             _loading = true;           
-            string dolares = await DolaresServices.GetDolarOficialAsync();
-            var dolarOficial = JsonSerializer.Deserialize<List<Dolares>>(dolares);
-            if (dolarOficial != null)
+            string euro = await EuroServices.GetEuroAsync();
+            var euroOficial = JsonSerializer.Deserialize<List<Euro>>(euro);
+            if (eurorOficial != null)
             {
-                dolarList = dolarOficial;
-                Console.WriteLine($"Datos deserializados correctamente. Número de registros: {dolarList.Count}");
-            
+                euroList = euroOficial;                         
             }
     }
     catch (Exception ex)

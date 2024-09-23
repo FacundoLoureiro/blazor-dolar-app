@@ -2,7 +2,7 @@
 
 namespace BlazorDolarApp.Models
 {
-    public class Dolares
+    public class Euro
     {
         [JsonPropertyName("moneda")]
         public string Moneda { get; set; }
