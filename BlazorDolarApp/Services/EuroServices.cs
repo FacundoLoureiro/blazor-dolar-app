@@ -4,9 +4,9 @@
     {
         private readonly HttpClient _httpClient;
 
-        public EuroServices(HttpClient httpClient)
+        public EuroServices(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("DolarApiClient");
         }
 
         public async Task<string> GetEuroAsync()

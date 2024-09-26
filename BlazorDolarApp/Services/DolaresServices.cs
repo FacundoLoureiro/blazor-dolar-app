@@ -8,9 +8,9 @@ namespace BlazorDolarApp.Services
     {
         private readonly HttpClient _httpClient;
 
-        public DolaresServices(HttpClient httpClient)
+        public DolaresServices(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("DolarApiClient");
         }
 
         public async Task<string> GetDolarOficialAsync()
