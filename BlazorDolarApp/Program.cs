@@ -18,6 +18,7 @@ builder.Services.AddHttpClient("DolarApiClient", client =>
 
 builder.Services.AddScoped<DolaresServices>();
 builder.Services.AddScoped<EuroServices>();
+builder.Services.AddScoped<MonedasServices>();
 builder.Services.AddMudServices();
 
 await builder.Build().RunAsync();

@@ -1,14 +1,62 @@
-﻿@page "/weather"
-@inject HttpClient Http
+﻿@page "/monedas"
+@using System.Text.Json
+@using BlazorDolarApp.Services
+@using BlazorDolarApp.Models
+@inject MonedasServices MonedasServices
+@inject ISnackbar Snackbar
 
-<PageTitle>Weather</PageTitle>
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <MudAlert Severity="Severity.Error" Class="my-2">@errorMessage</MudAlert>
+}
 
-<h1>Weather</h1>
-<h3>HOLA</h3>
-<p>This component demonstrates fetching data from the server.</p>
+<MudTable Items="@monedasList" T="Monedas" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Moneda</MudTh>
+        <MudTh>Nombre</MudTh>
+        <MudTh>Compra</MudTh>
+        <MudTh>Venta</MudTh>
+        <MudTh>Fecha Actualización</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+            <MudTd DataLabel="Moneda">@context.Moneda</MudTd>
+            <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
+            <MudTd DataLabel="Compra">@context.Compra</MudTd>
+            <MudTd DataLabel="Venta">@context.Venta</MudTd>
+            <MudTd DataLabel="Fecha Actualización">@context.FechaActualizacion</MudTd>
+     
+        </RowTemplate>      
+    </MudTable>
 
+ 
+    @code {
+    private List<Monedas> monedasList = new List<Monedas>();
+    private bool _loading = true;
+    private string errorMessage = "";
 
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _loading = true;           
+            string monedas = await MonedasServices.GetMonedasAsync();
+            var monedasCotizacion = JsonSerializer.Deserialize<List<Monedas>>(monedas);
+            if (monedasCotizacion != null)
+            {
+                monedasList = monedasCotizacion;
 
-@code {
-    
+            
+            }
+    }
+    catch (Exception ex)
+    {
+        errorMessage = $"Error al cargar datos: {ex.Message}";
+        Snackbar.Add(errorMessage, Severity.Error);
+        
+    }
+    finally
+    {
+        _loading = false;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorDolarApp</a>
+        <a class="navbar-brand" href="">Cotizaciones</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,17 +11,17 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> USD
+                <span class="bi bi-currency-dollar" aria-hidden="true"></span> Dolar[USD]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="euro" Match="NavLinkMatch.All">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Euro
+                <span class="bi bi-currency-euro" aria-hidden="true"></span> Euro[EUR]
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            <NavLink class="nav-link" href="monedas" Match="NavLinkMatch.All">
+                <span class="bi bi-coin" aria-hidden="true"></span> [+]Monedas
             </NavLink>
         </div>
     </nav>

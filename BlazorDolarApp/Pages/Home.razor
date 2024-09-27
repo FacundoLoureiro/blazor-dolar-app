@@ -10,7 +10,7 @@
     <MudAlert Severity="Severity.Error" Class="my-2">@errorMessage</MudAlert>
 }
 
-<MudTable Items="@dolarList" T="Dolares" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+<MudTable Items="@dolarList" T="Monedas" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Moneda</MudTh>
         <MudTh>Nombre</MudTh>
@@ -30,7 +30,7 @@
 
  
     @code {
-    private List<Dolares> dolarList = new List<Dolares>();
+    private List<Monedas> dolarList = new List<Monedas>();
     private bool _loading = true;
     private string errorMessage = "";
 
@@ -40,7 +40,7 @@
         {
             _loading = true;           
             string dolares = await DolaresServices.GetDolarOficialAsync();
-            var dolarOficial = JsonSerializer.Deserialize<List<Dolares>>(dolares);
+            var dolarOficial = JsonSerializer.Deserialize<List<Monedas>>(dolares);
             if (dolarOficial != null)
             {
                 dolarList = dolarOficial;
