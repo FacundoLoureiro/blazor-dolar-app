@@ -5,6 +5,7 @@
 Este proyecto es una aplicación web desarrollada en Blazor y .NET que te permite consultar los valores actuales de diferentes monedas del mercado. 📊
 
 
+
 Características 🚀
 
 💵 Tipos de dólar: Muestra los valores de diferentes tipos de dólares (oficial, blue, etc.).
@@ -16,6 +17,7 @@ Características 🚀
 📅 Actualización en tiempo real: Los datos se actualizan automáticamente para mantenerte informado.
 
 🖥️ Interfaz interactiva: Visualiza los datos en tablas claras y fáciles de usar.
+
 
 
 
@@ -31,14 +33,10 @@ Tecnologías 🛠️
 
 
 
+
 Créditos 🎖️
 
  • Esta aplicación utiliza datos de DolarApi.com para obtener los valores de las monedas. Agradecemos a los creadores de esta API por proporcionar un servicio público y gratuito. 🙌
-
-
-Vista previa 📸
-
- • Aquí algunas capturas de pantalla de la aplicación:
 
 
 
@@ -68,6 +66,8 @@ bash
 dotnet run
 
  • Accede a la aplicación: Abre tu navegador y navega a http://localhost:5000 para ver la aplicación en acción.
+
+
 
 
 Próximos pasos 📈
