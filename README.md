@@ -21,19 +21,25 @@ Características 🚀
 
 Tecnologías 🛠️
 
-Blazor WebAssembly: Para el desarrollo de la interfaz y la lógica del cliente.
+ • Blazor WebAssembly: Para el desarrollo de la interfaz y la lógica del cliente.
 
-.NET: Backend potente y flexible.
+ • .NET: Backend potente y flexible.
 
-MudBlazor: Para la creación de componentes visuales modernos y responsivos.
+ • MudBlazor: Para la creación de componentes visuales modernos y responsivos.
 
-API externa: Para obtener los valores actualizados de las monedas.
+ • API externa: Para obtener los valores actualizados de las monedas.
 
 
 
 Créditos 🎖️
 
-Esta aplicación utiliza datos de DolarApi.com para obtener los valores de las monedas. Agradecemos a los creadores de esta API por proporcionar un servicio público y gratuito. 🙌
+ • Esta aplicación utiliza datos de DolarApi.com para obtener los valores de las monedas. Agradecemos a los creadores de esta API por proporcionar un servicio público y gratuito. 🙌
+
+
+Vista previa 📸
+
+ • Aquí algunas capturas de pantalla de la aplicación:
+
 
 
 Instalación y Uso 🛠️
@@ -61,7 +67,7 @@ dotnet restore
 bash
 dotnet run
 
-Accede a la aplicación: Abre tu navegador y navega a http://localhost:5000 para ver la aplicación en acción.
+ • Accede a la aplicación: Abre tu navegador y navega a http://localhost:5000 para ver la aplicación en acción.
 
 
 Próximos pasos 📈
