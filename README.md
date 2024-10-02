@@ -68,6 +68,27 @@ dotnet run
  • Accede a la aplicación: Abre tu navegador y navega a http://localhost:5000 para ver la aplicación en acción.
 
 
+Vista previa del proyecto
+
+💵 Cotizaciones del Dólar
+![Cotizaciones del Dólar](./BlazorDolarApp/Images/Dolares-blazor-app.png)
+
+Esta tabla muestra las cotizaciones actualizadas del dólar en sus diferentes variantes.
+
+
+💶 Cotizaciones del Euro
+
+![Cotizaciones del Euro](./BlazorDolarApp/Images/Euro-blazor-app.png)
+
+Aca podes ver las cotizaciones del euro, con valores actualizados al momento.
+
+
+🌍 Cotizaciones de Diferentes Monedas
+
+![Cotizaciones de Diferentes Monedas](./BlazorDolarApp/Images/Monedas-blazor-app.png)
+
+Esta tabla muestra las cotizaciones de varias monedas internacionales, todas en tiempo real.
+
 
 
 Próximos pasos 📈
